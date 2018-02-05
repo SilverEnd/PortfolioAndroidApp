@@ -20,8 +20,10 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
+import android.support.annotation.StringRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,28 +109,24 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         void onFragmentDetached(String tag);
     }
 
-    /**
-     * Override for set view model
-     *
-     * @return view model instance
-     */
+
     public abstract V getViewModel();
 
-    /**
-     * Override for set binding variable
-     *
-     * @return variable id
-     */
     public abstract int getBindingVariable();
 
-    /**
-     * @return layout resource id
-     */
-    public abstract
     @LayoutRes
-    int getLayoutId();
+    public abstract int getLayoutId();
 
-    public void initViews(){
+    @StringRes
+    public abstract int getTitleId();
+
+    @DrawableRes
+    public abstract int getIconId();
+
+
+    public void initViews() {
 
     }
+
+
 }

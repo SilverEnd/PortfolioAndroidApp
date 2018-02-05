@@ -27,4 +27,9 @@ public class MainActivityModule {
         return new ViewModelProviderFactory<>(viewModel);
     }
 
+    @Provides
+    MainPagerAdapter provideFeedPagerAdapter(MainActivity activity) {
+        return new MainPagerAdapter(activity.getSupportFragmentManager());
+    }
+
 }

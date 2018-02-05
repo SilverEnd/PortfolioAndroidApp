@@ -1,5 +1,7 @@
 package com.erikzuo.portfolioandroidapp.ui.main.Contact;
 
+import android.os.Bundle;
+
 import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
 import com.erikzuo.portfolioandroidapp.databinding.FragmentContactBinding;
@@ -16,6 +18,13 @@ public class ContactFragment extends BaseFragment<FragmentContactBinding, Contac
     @Inject
     ContactViewModel mViewModel;
 
+    public static ContactFragment newInstance(){
+        Bundle args = new Bundle();
+        ContactFragment fragment = new ContactFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
     @Override
     public ContactViewModel getViewModel() {
         return mViewModel;
@@ -29,5 +38,15 @@ public class ContactFragment extends BaseFragment<FragmentContactBinding, Contac
     @Override
     public int getLayoutId() {
         return R.layout.fragment_contact;
+    }
+
+    @Override
+    public int getTitleId() {
+        return R.string.contact_me;
+    }
+
+    @Override
+    public int getIconId() {
+        return R.drawable.ic_launcher_background;
     }
 }
