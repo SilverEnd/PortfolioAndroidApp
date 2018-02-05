@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+
+        <item
+            android:id="@+id/navItemAbout"
+            android:checked="true"
+            android:title="@string/contact_me"/>
+        <item
+            android:id="@+id/navItemWork"
+            android:checked="true"
+            android:title="@string/contact_me"/>
+        <item
+            android:id="@+id/navItemEducation"
+            android:checked="true"
+            android:title="@string/contact_me"/>
+
+        <item
+            android:id="@+id/navItemContact"
+            android:checked="true"
+            android:title="@string/contact_me"/>
+    </group>
+</menu>

@@ -5,4 +5,8 @@
     <string name="contact_me">Contact Me</string>
 
 
+    <!--Drawer-->
+    <string name="open_drawer">Drawer Open</string>
+    <string name="close_drawer">Drawer Close</string>
+
 </resources>

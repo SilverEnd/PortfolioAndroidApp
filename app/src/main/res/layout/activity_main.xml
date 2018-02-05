@@ -1,65 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.main.MainActivity" >
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context=".ui.main.MainActivity">
 
     <data>
 
-        <variable
-            name="viewModel"
-            type="com.erikzuo.portfolioandroidapp.ui.main.MainViewModel"/>
+        <!--<import type="android.view.View" />-->
+
+        <!--<variable-->
+            <!--name="viewModel"-->
+            <!--type="com.erikzuo.portfolioandroidapp.ui.main.MainViewModel"/>-->
 
     </data>
 
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
+        <android.support.v4.widget.DrawerLayout
 
-        <RelativeLayout
-            android:id="@+id/rootView"
+            android:id="@+id/drawerView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
 
-            <android.support.design.widget.AppBarLayout
-                android:id="@+id/appBar"
+            <android.support.design.widget.CoordinatorLayout
+                android:id="@+id/clRootView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:elevation="5dp">
+                android:layout_height="match_parent"
+                android:clipChildren="false">
 
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
+                <LinearLayout
+                    android:id="@+id/activityMain"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.AppBarLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:elevation="5dp">
+
+                        <android.support.v7.widget.Toolbar
+                            android:id="@+id/toolbar"
+                            style="@style/Toolbar"
+                            app:subtitleTextColor="@color/white"
+                            app:title="@string/app_name"
+                             app:titleTextColor="@color/white"/>
+
+                    </android.support.design.widget.AppBarLayout>
+
+                </LinearLayout>
+            </android.support.design.widget.CoordinatorLayout>
+
+            <android.support.design.widget.NavigationView
+                android:id="@+id/navigationView"
+                style="@style/Widget.Design.NavigationView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                android:background="@color/white"
+                app:itemBackground="@color/white"
+                app:menu="@menu/drawer">
+
+                <TextView
+                    android:id="@+id/tvAppVersion"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:subtitleTextColor="@color/white"
-                    app:title="@string/app_name"
-                    app:titleTextColor="@color/white" />
+                    android:layout_gravity="bottom|end"
+                    android:padding="5dp"/>
 
-            </android.support.design.widget.AppBarLayout>
+            </android.support.design.widget.NavigationView>
 
+        </android.support.v4.widget.DrawerLayout>
 
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tabLayout"
-                android:layout_width="match_parent"
-                android:background="@color/tabLayoutBg"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true" />
-
-            <android.support.v4.view.ViewPager
-                android:layout_width="match_parent"
-                android:id="@+id/pager"
-                android:layout_below="@id/appBar"
-                android:layout_above="@id/tabLayout"
-                android:layout_height="match_parent"/>
+        <android.support.v4.widget.ContentLoadingProgressBar
+            android:id="@+id/address_looking_up"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
 
 
-        </RelativeLayout>
-
-
-    </LinearLayout>
+    </FrameLayout>
 
 
 </layout>

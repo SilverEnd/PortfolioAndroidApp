@@ -3,18 +3,22 @@ package com.erikzuo.portfolioandroidapp.ui.main;
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.view.MenuItem;
+import android.view.View;
 
-import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
 import com.erikzuo.portfolioandroidapp.databinding.ActivityMainBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseActivity;
-import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
 
 import javax.inject.Inject;
 
+import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
@@ -27,9 +31,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     @Inject
     ViewModelProvider.Factory mViewModelFactory;
-
-    @Inject
-    MainPagerAdapter mPagerAdapter;
 
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
@@ -51,7 +52,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     @Override
     public int getBindingVariable() {
-        return BR.viewModel;
+        return 0;
     }
 
     @Override
@@ -68,42 +69,47 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     public void initViews() {
         super.initViews();
 
-        for (BaseFragment page : mPagerAdapter.mPages) {
-            getViewDataBinding().tabLayout.addTab(
-                    getViewDataBinding().tabLayout.newTab()
-                            .setText(page.getTitleId())
-                            .setIcon(page.getIconId()));
-        }
-        getViewDataBinding().tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
+                this,
+                getViewDataBinding().drawerView,
+                getViewDataBinding().toolbar,
+                R.string.open_drawer,
+                R.string.close_drawer) {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                getViewDataBinding().pager.setCurrentItem(tab.getPosition());
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                hideKeyboard();
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
             }
+        };
+        getViewDataBinding().drawerView.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
-
-        getViewDataBinding().pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener( getViewDataBinding().tabLayout));
-        getViewDataBinding().pager.setAdapter(mPagerAdapter);
+        setupNavMenu();
     }
 
-    private boolean onNavItemSelected(int id) {
-        switch (id) {
-//            case R.id.navItemMarket:
-//                showMarketFragment();
-//                return true;
-            default:
-                return false;
-        }
+    private void setupNavMenu() {
+        getViewDataBinding().navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        getViewDataBinding().drawerView.closeDrawer(GravityCompat.START);
+
+                        switch (item.getItemId()) {
+                            case R.id.navItemAbout:
+                                showContactFragment();
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
     }
+
 
     private void showContactFragment() {
 //        getSupportFragmentManager()

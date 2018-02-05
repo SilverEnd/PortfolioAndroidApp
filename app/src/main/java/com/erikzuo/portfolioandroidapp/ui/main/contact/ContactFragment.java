@@ -1,11 +1,12 @@
-package com.erikzuo.portfolioandroidapp.ui.main.Contact;
+package com.erikzuo.portfolioandroidapp.ui.main.contact;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 
-import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
 import com.erikzuo.portfolioandroidapp.databinding.FragmentContactBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
+import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
@@ -16,9 +17,11 @@ import javax.inject.Inject;
 public class ContactFragment extends BaseFragment<FragmentContactBinding, ContactViewModel> implements ContactNavigator {
 
     @Inject
-    ContactViewModel mViewModel;
+    ViewModelProviderFactory mFactory;
 
-    public static ContactFragment newInstance(){
+    private ContactViewModel mViewModel;
+
+    public static ContactFragment newInstance() {
         Bundle args = new Bundle();
         ContactFragment fragment = new ContactFragment();
         fragment.setArguments(args);
@@ -27,12 +30,14 @@ public class ContactFragment extends BaseFragment<FragmentContactBinding, Contac
 
     @Override
     public ContactViewModel getViewModel() {
+        mViewModel = ViewModelProviders.of(this, mFactory).get(ContactViewModel.class);
+
         return mViewModel;
     }
 
     @Override
     public int getBindingVariable() {
-        return BR.viewModel;
+        return 0;
     }
 
     @Override

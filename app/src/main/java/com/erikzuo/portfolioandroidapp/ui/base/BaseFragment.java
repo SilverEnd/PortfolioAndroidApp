@@ -1,19 +1,3 @@
-/*
- *  Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      https://mindorks.com/license/apache-v2
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License
- */
-
 package com.erikzuo.portfolioandroidapp.ui.base;
 
 import android.content.Context;
@@ -33,6 +17,26 @@ import dagger.android.support.AndroidSupportInjection;
 
 /**
  * Created by amitshekhar on 09/07/17.
+ */
+
+import android.content.Context;
+import android.databinding.DataBindingUtil;
+import android.databinding.ViewDataBinding;
+import android.os.Bundle;
+import android.support.annotation.DrawableRes;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.StringRes;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.erikzuo.portfolioandroidapp.ui.base.BaseActivity;
+import com.erikzuo.portfolioandroidapp.ui.base.BaseViewModel;
+
+import dagger.android.support.AndroidSupportInjection;
+
+/**
+ * Created by YifanZuo on 3/2/18.
  */
 
 public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseViewModel> extends Fragment {

@@ -1,5 +1,4 @@
-package com.erikzuo.portfolioandroidapp.ui.main;
-
+package com.erikzuo.portfolioandroidapp.ui.main.home;
 
 import com.erikzuo.portfolioandroidapp.data.DataManager;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseViewModel;
@@ -8,13 +7,13 @@ import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider;
 import javax.inject.Inject;
 
 /**
- * Created by YifanZuo on 4/2/18.
+ * Created by YifanZuo on 5/2/18.
  */
 
-public class MainViewModel extends BaseViewModel<MainNavigator> {
+public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 
     @Inject
-    public MainViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
+    public HomeViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
     }
 }

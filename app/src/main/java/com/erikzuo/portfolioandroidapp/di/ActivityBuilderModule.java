@@ -1,9 +1,8 @@
 package com.erikzuo.portfolioandroidapp.di;
 
 
-import com.erikzuo.portfolioandroidapp.ui.main.Contact.ContactFragmentProvider;
 import com.erikzuo.portfolioandroidapp.ui.main.MainActivity;
-import com.erikzuo.portfolioandroidapp.ui.main.MainActivityModule;
+import com.erikzuo.portfolioandroidapp.ui.main.MainFragmentsModule;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -15,6 +14,6 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public abstract class ActivityBuilderModule {
 
-    @ContributesAndroidInjector(modules = {MainActivityModule.class, ContactFragmentProvider.class})
-    abstract MainActivity bindMainActivity();
+    @ContributesAndroidInjector(modules = {MainFragmentsModule.class})
+    abstract MainActivity contributeMainActivity();
 }

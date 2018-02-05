@@ -3,6 +3,7 @@ package com.erikzuo.portfolioandroidapp;
 import android.app.Activity;
 import android.app.Application;
 
+
 import com.erikzuo.portfolioandroidapp.di.DaggerAppComponent;
 
 import javax.inject.Inject;

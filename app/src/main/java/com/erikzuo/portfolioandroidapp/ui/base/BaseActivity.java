@@ -1,19 +1,3 @@
-/*
- *  Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      https://mindorks.com/license/apache-v2
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License
- */
-
 package com.erikzuo.portfolioandroidapp.ui.base;
 
 import android.annotation.TargetApi;
@@ -33,15 +17,10 @@ import android.view.inputmethod.InputMethodManager;
 import dagger.android.AndroidInjection;
 
 /**
- * Created by amitshekhar on 07/07/17.
+ * Created by YifanZuo on 3/2/18.
  */
 
 public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity implements BaseFragment.Callback {
-
-    // TODO
-    // this can probably depend on isLoading variable of BaseViewModel,
-    // since its going to be common for all the activities
-    private ProgressDialog mProgressDialog;
 
     private T mViewDataBinding;
     private V mViewModel;
@@ -98,41 +77,16 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
         return true;
     }
 
-    public void showLoading() {
-        hideLoading();
-//        mProgressDialog = CommonUtils.showLoadingDialog(this);
-    }
-
-    public void hideLoading() {
-        if (mProgressDialog != null && mProgressDialog.isShowing()) {
-            mProgressDialog.cancel();
-        }
-    }
-
     public T getViewDataBinding() {
         return mViewDataBinding;
     }
 
-    /**
-     * Override for set view model
-     *
-     * @return view model instance
-     */
     public abstract V getViewModel();
 
-    /**
-     * Override for set binding variable
-     *
-     * @return variable id
-     */
     public abstract int getBindingVariable();
 
-    /**
-     * @return layout resource id
-     */
-    public abstract
     @LayoutRes
-    int getLayoutId();
+    public abstract int getLayoutId();
 
     public void performDependencyInjection() {
         AndroidInjection.inject(this);

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.erikzuo.portfolioandroidapp.ui.main.Contact.ContactViewModel"/>
+            type="com.erikzuo.portfolioandroidapp.ui.main.contact.ContactViewModel"/>
     </data>
 
     <LinearLayout

@@ -3,7 +3,6 @@ package com.erikzuo.portfolioandroidapp.di;
 import android.app.Application;
 import android.content.Context;
 
-
 import com.erikzuo.portfolioandroidapp.data.AppDataManager;
 import com.erikzuo.portfolioandroidapp.data.DataManager;
 import com.erikzuo.portfolioandroidapp.utils.rx.AppSchedulerProvider;
@@ -19,7 +18,7 @@ import dagger.Provides;
  */
 
 
-@Module
+@Module(includes = ViewModelModule.class)
 public class AppModule {
 
     @Provides
@@ -32,7 +31,8 @@ public class AppModule {
     SchedulerProvider provideSchedulerProvider() {
         return new AppSchedulerProvider();
     }
-//
+
+    //
 //    @Provides
 //    @DatabaseInfo
 //    String provideDatabaseName() {
