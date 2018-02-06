@@ -16,4 +16,8 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
     public HomeViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
     }
+
+    public void setPageTitle(String title){
+        super.setPageTitle(title);
+    }
 }

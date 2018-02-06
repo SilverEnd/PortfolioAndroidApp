@@ -5,6 +5,7 @@ import android.app.Application;
 
 
 import com.erikzuo.portfolioandroidapp.di.DaggerAppComponent;
+import com.squareup.picasso.Picasso;
 
 import javax.inject.Inject;
 
@@ -29,6 +30,7 @@ public class App extends Application implements HasActivityInjector {
                 .application(this)
                 .build()
                 .inject(this);
+
     }
 
     @Override

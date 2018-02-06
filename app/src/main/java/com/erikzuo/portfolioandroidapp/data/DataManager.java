@@ -5,4 +5,8 @@ package com.erikzuo.portfolioandroidapp.data;
  */
 
 public interface DataManager {
+
+    String getName();
+
+    String getEmail();
 }

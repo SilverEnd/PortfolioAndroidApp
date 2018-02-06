@@ -10,7 +10,21 @@ import javax.inject.Inject;
 
 public class AppDataManager implements DataManager {
 
+    private final Context mContext;
+
+
     @Inject
     public AppDataManager(Context context) {
+        mContext = context;
+    }
+
+    @Override
+    public String getName() {
+        return "Erik Zuo";
+    }
+
+    @Override
+    public String getEmail() {
+        return null;
     }
 }

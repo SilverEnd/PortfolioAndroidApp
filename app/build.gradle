@@ -25,18 +25,18 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // android support libraries
+    // Android support libraries
     implementation "com.android.support:appcompat-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:recyclerview-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:cardview-v7:$rootProject.supportLibraryVersion"
     implementation "com.android.support:design:$rootProject.supportLibraryVersion"
 
-    // android architecture component
+    // Android architecture component
     implementation "android.arch.lifecycle:runtime:$rootProject.androidArchVersion"
     implementation "android.arch.lifecycle:extensions:$rootProject.androidArchVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.androidArchVersion"
 
-    // dependency injection
+    // Dependency injection
     implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
     implementation "com.google.dagger:dagger-android:$rootProject.dagger2Version"
@@ -47,12 +47,19 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
     implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
 
-    // parser
+    // Gson
     implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+
+    // Circle image view
+    implementation "de.hdodenhof:circleimageview:$rootProject.circleImageviewVersion"
+
+    // Picasso
+    implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+
 
     // UI Testing
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"

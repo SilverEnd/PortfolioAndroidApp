@@ -2,6 +2,7 @@ package com.erikzuo.portfolioandroidapp.ui.main;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,13 +13,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
 import com.erikzuo.portfolioandroidapp.databinding.ActivityMainBinding;
+import com.erikzuo.portfolioandroidapp.databinding.NavHeaderMainBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseActivity;
+import com.erikzuo.portfolioandroidapp.ui.main.contact.ContactFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.home.HomeFragment;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.HasSupportFragmentInjector;
@@ -52,7 +56,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     @Override
     public int getBindingVariable() {
-        return 0;
+        return BR.viewModel;
     }
 
     @Override
@@ -67,8 +71,16 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
 
     @Override
     public void initViews() {
-        super.initViews();
+        setupNavDrawer();
+        setupNavMenu();
 
+        // When we first opened this activity, display Home fragment
+        showFragment(
+                HomeFragment.newInstance(),
+                getString(R.string.home));
+    }
+
+    private void setupNavDrawer() {
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(
                 this,
                 getViewDataBinding().drawerView,
@@ -86,22 +98,36 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                 super.onDrawerClosed(drawerView);
             }
         };
+
         getViewDataBinding().drawerView.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-
-        setupNavMenu();
     }
 
     private void setupNavMenu() {
+        NavHeaderMainBinding navHeaderMainBinding = DataBindingUtil.inflate(getLayoutInflater(),
+                R.layout.nav_header_main, getViewDataBinding().navigationView, false);
+        getViewDataBinding().navigationView.addHeaderView(navHeaderMainBinding.getRoot());
+        navHeaderMainBinding.setViewModel(mViewModel);
+
         getViewDataBinding().navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         getViewDataBinding().drawerView.closeDrawer(GravityCompat.START);
 
+                        mViewModel.setIsLoading(false);
                         switch (item.getItemId()) {
-                            case R.id.navItemAbout:
-                                showContactFragment();
+                            case R.id.navItemHome:
+                                showFragment(
+                                        HomeFragment.newInstance(),
+                                        getString(R.string.home));
+
+                                return true;
+                            case R.id.navItemContact:
+                                showFragment(
+                                        ContactFragment.newInstance(),
+                                        getString(R.string.contact));
+
                                 return true;
                             default:
                                 return false;
@@ -110,13 +136,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                 });
     }
 
+    private void showFragment(Fragment fragment, String title) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+                .replace(R.id.clRootView, fragment)
+                .commit();
 
-    private void showContactFragment() {
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .disallowAddToBackStack()
-////                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
-//                .add(R.id.clRootView, ContactFragment.newInstance(), MarketFragment.TAG)
-//                .commit();
+        mViewModel.setPageTitle(title);
     }
 }

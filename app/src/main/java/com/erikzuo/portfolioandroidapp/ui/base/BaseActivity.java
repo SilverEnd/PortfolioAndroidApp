@@ -81,6 +81,11 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
         return mViewDataBinding;
     }
 
+    public void performDependencyInjection() {
+        AndroidInjection.inject(this);
+    }
+
+
     public abstract V getViewModel();
 
     public abstract int getBindingVariable();
@@ -88,13 +93,6 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
     @LayoutRes
     public abstract int getLayoutId();
 
-    public void performDependencyInjection() {
-        AndroidInjection.inject(this);
-    }
-
-    public void initViews(){
-
-    }
-
+    public abstract void initViews();
 }
 

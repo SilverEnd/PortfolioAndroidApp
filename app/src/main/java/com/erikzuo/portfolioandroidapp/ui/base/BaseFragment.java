@@ -55,7 +55,8 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container,
                              Bundle savedInstanceState) {
         mViewDataBinding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false);
         mRootView = mViewDataBinding.getRoot();
@@ -85,6 +86,13 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
         mActivity = null;
         super.onDetach();
     }
+
+    @LayoutRes
+    public abstract int getLayoutId();
+
+    public abstract void initViews();
+
+
 
     public BaseActivity getBaseActivity() {
         return mActivity;
@@ -117,20 +125,6 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     public abstract V getViewModel();
 
     public abstract int getBindingVariable();
-
-    @LayoutRes
-    public abstract int getLayoutId();
-
-    @StringRes
-    public abstract int getTitleId();
-
-    @DrawableRes
-    public abstract int getIconId();
-
-
-    public void initViews() {
-
-    }
 
 
 }

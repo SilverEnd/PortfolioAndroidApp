@@ -2,9 +2,13 @@ package com.erikzuo.portfolioandroidapp.ui.main.home;
 
 import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
+import android.os.Bundle;
 
+import com.erikzuo.portfolioandroidapp.BR;
+import com.erikzuo.portfolioandroidapp.R;
 import com.erikzuo.portfolioandroidapp.databinding.FragmenHomeBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.contact.ContactFragment;
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
 
 import javax.inject.Inject;
@@ -14,11 +18,21 @@ import javax.inject.Inject;
  */
 
 public class HomeFragment extends BaseFragment<FragmenHomeBinding, HomeViewModel> implements HomeNavigator {
+    public static final String TAG = "HomeFragment";
 
     @Inject
     ViewModelProviderFactory mFactory;
 
     private HomeViewModel mViewModel;
+
+
+    public static HomeFragment newInstance() {
+        Bundle args = new Bundle();
+        HomeFragment fragment = new HomeFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Override
     public HomeViewModel getViewModel() {
@@ -29,21 +43,17 @@ public class HomeFragment extends BaseFragment<FragmenHomeBinding, HomeViewModel
 
     @Override
     public int getBindingVariable() {
-        return 0;
+        return BR.viewModel;
     }
 
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.fragmen_home;
     }
 
     @Override
-    public int getTitleId() {
-        return 0;
+    public void initViews() {
+
     }
 
-    @Override
-    public int getIconId() {
-        return 0;
-    }
 }

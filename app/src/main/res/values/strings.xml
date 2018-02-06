@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">PortfolioAndroidApp</string>
 
-    <!--Navigation items-->
-    <string name="contact_me">Contact Me</string>
+    <!--Basice info-->
+    <string name="name"></string>
+
+    <string name="home">Home</string>
+    <string name="contact">Contact</string>
 
 
     <!--Drawer-->
