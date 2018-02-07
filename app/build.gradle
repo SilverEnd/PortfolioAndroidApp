@@ -53,6 +53,7 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$rootProject.retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$rootProject.retrofitVersion"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$rootProject.retrofitVersion"
 
     // Circle image view
     implementation "de.hdodenhof:circleimageview:$rootProject.circleImageviewVersion"

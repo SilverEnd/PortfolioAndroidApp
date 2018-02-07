@@ -4,8 +4,9 @@ import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
 
 import com.erikzuo.portfolioandroidapp.ui.main.MainViewModel;
-import com.erikzuo.portfolioandroidapp.ui.main.contact.ContactViewModel;
+import com.erikzuo.portfolioandroidapp.ui.main.about.AboutViewModel;
 import com.erikzuo.portfolioandroidapp.ui.main.home.HomeViewModel;
+import com.erikzuo.portfolioandroidapp.ui.main.work.WorkViewModel;
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
 
 import dagger.Binds;
@@ -26,8 +27,16 @@ public abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ContactViewModel.class)
-    abstract ViewModel bindContactViewModel(ContactViewModel viewModel);
+    @ViewModelKey(AboutViewModel.class)
+    abstract ViewModel bindContactViewModel(AboutViewModel viewModel);
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(WorkViewModel.class)
+    abstract ViewModel bindWorkViewModel(WorkViewModel viewModel);
+
+
+
 
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelProviderFactory factory);

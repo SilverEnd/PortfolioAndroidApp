@@ -2,6 +2,8 @@ package com.erikzuo.portfolioandroidapp.data;
 
 import android.content.Context;
 
+import com.erikzuo.portfolioandroidapp.data.remote.GithubService;
+
 import javax.inject.Inject;
 
 /**
@@ -10,12 +12,14 @@ import javax.inject.Inject;
 
 public class AppDataManager implements DataManager {
 
-    private final Context mContext;
 
+    private final Context context;
+    private GithubService githubService;
 
     @Inject
-    public AppDataManager(Context context) {
-        mContext = context;
+    public AppDataManager(Context context, GithubService githubService) {
+        this.context = context;
+        this.githubService = githubService;
     }
 
     @Override

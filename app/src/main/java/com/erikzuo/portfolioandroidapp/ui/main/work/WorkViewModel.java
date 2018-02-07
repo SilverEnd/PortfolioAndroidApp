@@ -1,5 +1,4 @@
-package com.erikzuo.portfolioandroidapp.ui.main.contact;
-
+package com.erikzuo.portfolioandroidapp.ui.main.work;
 
 import com.erikzuo.portfolioandroidapp.data.DataManager;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseViewModel;
@@ -8,13 +7,13 @@ import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider;
 import javax.inject.Inject;
 
 /**
- * Created by YifanZuo on 4/2/18.
+ * Created by Soprano on 7/02/2018.
  */
 
-public class ContactViewModel extends BaseViewModel<ContactNavigator> {
+public class WorkViewModel extends BaseViewModel<WorkNavigator> {
 
     @Inject
-    public ContactViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
+    public WorkViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
     }
 }

@@ -1,38 +1,43 @@
-package com.erikzuo.portfolioandroidapp.ui.main.contact;
+package com.erikzuo.portfolioandroidapp.ui.main.work;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 
 import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
-import com.erikzuo.portfolioandroidapp.databinding.FragmentContactBinding;
+import com.erikzuo.portfolioandroidapp.databinding.FragmentIndustryWorkBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
 /**
- * Created by YifanZuo on 4/2/18.
+ * Created by Soprano on 7/02/2018.
  */
 
-public class ContactFragment extends BaseFragment<FragmentContactBinding, ContactViewModel> implements ContactNavigator {
+public class IndustryWorkFragment extends BaseFragment<FragmentIndustryWorkBinding, WorkViewModel> {
 
     @Inject
     ViewModelProviderFactory mFactory;
 
-    private ContactViewModel mViewModel;
+    private WorkViewModel mViewModel;
 
-    public static ContactFragment newInstance() {
+
+    public static IndustryWorkFragment newInstance() {
         Bundle args = new Bundle();
-        ContactFragment fragment = new ContactFragment();
+        IndustryWorkFragment fragment = new IndustryWorkFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public ContactViewModel getViewModel() {
-        mViewModel = ViewModelProviders.of(this, mFactory).get(ContactViewModel.class);
+    public int getLayoutId() {
+        return R.layout.fragment_industry_work;
+    }
 
+    @Override
+    public WorkViewModel getViewModel() {
+        mViewModel = ViewModelProviders.of(this, mFactory).get(WorkViewModel.class);
         return mViewModel;
     }
 
@@ -42,13 +47,7 @@ public class ContactFragment extends BaseFragment<FragmentContactBinding, Contac
     }
 
     @Override
-    public int getLayoutId() {
-        return R.layout.fragment_contact;
-    }
-
-    @Override
     public void initViews() {
 
     }
-
 }

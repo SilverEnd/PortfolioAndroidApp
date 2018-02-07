@@ -1,17 +1,12 @@
 package com.erikzuo.portfolioandroidapp.ui.main;
 
-import android.arch.lifecycle.ViewModelProvider;
-
-import com.erikzuo.portfolioandroidapp.data.DataManager;
-import com.erikzuo.portfolioandroidapp.ui.main.contact.ContactFragment;
-import com.erikzuo.portfolioandroidapp.ui.main.contact.ContactViewModel;
+import com.erikzuo.portfolioandroidapp.ui.main.about.AboutFragment;
 import com.erikzuo.portfolioandroidapp.ui.main.home.HomeFragment;
-import com.erikzuo.portfolioandroidapp.ui.main.home.HomeViewModel;
-import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider;
-import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
+import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragmentModule;
+import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragmentsProvider;
 
 import dagger.Module;
-import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
 
 /**
@@ -25,7 +20,8 @@ public abstract class MainFragmentsModule {
     abstract HomeFragment contributeHomeFragment();
 
     @ContributesAndroidInjector
-    abstract ContactFragment contributeContactFragment();
+    abstract AboutFragment contributeContactFragment();
 
-
+    @ContributesAndroidInjector(modules = {WorkFragmentsProvider.class, WorkFragmentModule.class})
+    abstract WorkFragment contributeWorkFragment();
 }

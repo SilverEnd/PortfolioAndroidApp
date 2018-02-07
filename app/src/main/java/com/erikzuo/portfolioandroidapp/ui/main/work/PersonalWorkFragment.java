@@ -1,41 +1,43 @@
-package com.erikzuo.portfolioandroidapp.ui.main.home;
+package com.erikzuo.portfolioandroidapp.ui.main.work;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 
 import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
-import com.erikzuo.portfolioandroidapp.databinding.FragmenHomeBinding;
+import com.erikzuo.portfolioandroidapp.databinding.FragmentPersonalWorkBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
 /**
- * Created by YifanZuo on 5/2/18.
+ * Created by Soprano on 7/02/2018.
  */
 
-public class HomeFragment extends BaseFragment<FragmenHomeBinding, HomeViewModel> implements HomeNavigator {
-    public static final String TAG = "HomeFragment";
+public class PersonalWorkFragment extends BaseFragment<FragmentPersonalWorkBinding, WorkViewModel> {
 
     @Inject
     ViewModelProviderFactory mFactory;
 
-    private HomeViewModel mViewModel;
+    private WorkViewModel mViewModel;
 
 
-    public static HomeFragment newInstance() {
+    public static PersonalWorkFragment newInstance() {
         Bundle args = new Bundle();
-        HomeFragment fragment = new HomeFragment();
+        PersonalWorkFragment fragment = new PersonalWorkFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
+    @Override
+    public int getLayoutId() {
+        return R.layout.fragment_personal_work;
+    }
 
     @Override
-    public HomeViewModel getViewModel() {
-        mViewModel = ViewModelProviders.of(this, mFactory).get(HomeViewModel.class);
-
+    public WorkViewModel getViewModel() {
+        mViewModel = ViewModelProviders.of(this, mFactory).get(WorkViewModel.class);
         return mViewModel;
     }
 
@@ -45,13 +47,7 @@ public class HomeFragment extends BaseFragment<FragmenHomeBinding, HomeViewModel
     }
 
     @Override
-    public int getLayoutId() {
-        return R.layout.fragmen_home;
-    }
-
-    @Override
     public void initViews() {
 
     }
-
 }

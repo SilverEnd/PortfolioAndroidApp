@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.erikzuo.portfolioandroidapp.ui.main.contact.ContactViewModel" />
+            type="com.erikzuo.portfolioandroidapp.ui.main.about.AboutViewModel" />
 
     </data>
 
@@ -18,7 +18,7 @@
         android:layout_height="match_parent"
         android:fillViewport="true">
 
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -57,14 +57,7 @@
 
             </LinearLayout>
 
-            <android.support.v4.widget.ContentLoadingProgressBar
-                style="?android:attr/progressBarStyleLarge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
-
-        </RelativeLayout>
+        </FrameLayout>
 
     </ScrollView>
 

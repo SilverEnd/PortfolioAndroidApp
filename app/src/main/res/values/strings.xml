@@ -6,7 +6,11 @@
 
     <string name="home">Home</string>
     <string name="contact">Contact</string>
+    <string name="education">Education</string>
+    <string name="work">Work</string>
 
+    <string name="industry_work">Industry</string>
+    <string name="personal_work">Personal</string>
 
     <!--Drawer-->
     <string name="open_drawer">Drawer Open</string>

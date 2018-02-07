@@ -9,11 +9,11 @@
         <item
             android:id="@+id/navItemWork"
             android:checked="true"
-            android:title="@string/contact"/>
+            android:title="@string/work"/>
         <item
             android:id="@+id/navItemEducation"
             android:checked="true"
-            android:title="@string/contact"/>
+            android:title="@string/education"/>
 
         <item
             android:id="@+id/navItemContact"

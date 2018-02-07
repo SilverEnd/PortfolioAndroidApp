@@ -18,8 +18,9 @@ import com.erikzuo.portfolioandroidapp.R;
 import com.erikzuo.portfolioandroidapp.databinding.ActivityMainBinding;
 import com.erikzuo.portfolioandroidapp.databinding.NavHeaderMainBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseActivity;
-import com.erikzuo.portfolioandroidapp.ui.main.contact.ContactFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.about.AboutFragment;
 import com.erikzuo.portfolioandroidapp.ui.main.home.HomeFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragment;
 
 import javax.inject.Inject;
 
@@ -123,9 +124,21 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                                         getString(R.string.home));
 
                                 return true;
+                            case R.id.navItemWork:
+                                showFragment(
+                                        WorkFragment.newInstance(),
+                                        getString(R.string.work));
+
+                                return true;
+                            case R.id.navItemEducation:
+                                showFragment(
+                                        HomeFragment.newInstance(),
+                                        getString(R.string.education));
+
+                                return true;
                             case R.id.navItemContact:
                                 showFragment(
-                                        ContactFragment.newInstance(),
+                                        AboutFragment.newInstance(),
                                         getString(R.string.contact));
 
                                 return true;

@@ -90,6 +90,10 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     @LayoutRes
     public abstract int getLayoutId();
 
+    public abstract V getViewModel();
+
+    public abstract int getBindingVariable();
+
     public abstract void initViews();
 
 
@@ -122,9 +126,6 @@ public abstract class BaseFragment<T extends ViewDataBinding, V extends BaseView
     }
 
 
-    public abstract V getViewModel();
-
-    public abstract int getBindingVariable();
 
 
 }
