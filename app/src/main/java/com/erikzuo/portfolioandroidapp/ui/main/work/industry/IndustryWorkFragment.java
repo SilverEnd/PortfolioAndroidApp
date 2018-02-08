@@ -1,4 +1,4 @@
-package com.erikzuo.portfolioandroidapp.ui.main.work;
+package com.erikzuo.portfolioandroidapp.ui.main.work.industry;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
 import com.erikzuo.portfolioandroidapp.databinding.FragmentIndustryWorkBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.work.WorkViewModel;
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
 
 import javax.inject.Inject;

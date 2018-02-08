@@ -4,6 +4,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.erikzuo.portfolioandroidapp.ui.main.work.industry.IndustryWorkFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.work.personal.PersonalWorkFragment;
+
 /**
  * Created by Soprano on 7/02/2018.
  */

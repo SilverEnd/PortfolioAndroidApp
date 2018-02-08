@@ -1,9 +1,6 @@
 package com.erikzuo.portfolioandroidapp.data;
 
-import android.arch.lifecycle.LiveData;
-
 import com.erikzuo.portfolioandroidapp.data.model.Repo;
-import com.erikzuo.portfolioandroidapp.data.remote.ApiResponse;
 
 import java.util.List;
 
@@ -19,5 +16,5 @@ public interface DataManager {
 
     String getEmail();
 
-    Observable<ApiResponse<List<Repo>>> getRepos();
+    Observable<List<Repo>> getRepoListApiCall();
 }

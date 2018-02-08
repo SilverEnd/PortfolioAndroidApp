@@ -5,7 +5,6 @@ import android.databinding.ObservableArrayList;
 
 import com.erikzuo.portfolioandroidapp.data.DataManager;
 import com.erikzuo.portfolioandroidapp.data.model.Repo;
-import com.erikzuo.portfolioandroidapp.data.remote.ApiResponse;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseViewModel;
 import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider;
 
@@ -19,7 +18,7 @@ import javax.inject.Inject;
 
 public class WorkViewModel extends BaseViewModel<WorkNavigator> {
 
-    private final MutableLiveData<ApiResponse<List<Repo>>> reposLiveData = new MutableLiveData<>();
+    private final MutableLiveData<List<Repo>> reposLiveData = new MutableLiveData<>();
     private final ObservableArrayList<Repo> repoList = new ObservableArrayList<>();
 
     @Inject
@@ -31,7 +30,7 @@ public class WorkViewModel extends BaseViewModel<WorkNavigator> {
 
     public void loadRepos() {
         getCompositeDisposable().add(getDataManager()
-                .getRepos()
+                .getRepoListApiCall()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(
@@ -40,13 +39,16 @@ public class WorkViewModel extends BaseViewModel<WorkNavigator> {
         );
     }
 
-    public MutableLiveData<ApiResponse<List<Repo>>> getReposLiveData(){
+    public MutableLiveData<List<Repo>> getReposLiveData() {
         return reposLiveData;
     }
 
+    public ObservableArrayList<Repo> getRepoList() {
+        return repoList;
+    }
 
     public void addRepos(List<Repo> repos) {
         repoList.clear();
-        repos.addAll(repos);
+        repoList.addAll(repos);
     }
 }

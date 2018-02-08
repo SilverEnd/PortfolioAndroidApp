@@ -1,10 +1,8 @@
 package com.erikzuo.portfolioandroidapp.data;
 
-import android.arch.lifecycle.LiveData;
 import android.content.Context;
 
 import com.erikzuo.portfolioandroidapp.data.model.Repo;
-import com.erikzuo.portfolioandroidapp.data.remote.ApiResponse;
 import com.erikzuo.portfolioandroidapp.data.remote.GithubService;
 
 import java.util.List;
@@ -40,7 +38,7 @@ public class AppDataManager implements DataManager {
     }
 
     @Override
-    public Observable<ApiResponse<List<Repo>>> getRepos() {
+    public Observable<List<Repo>> getRepoListApiCall() {
         return githubService.getRepos("silverend");
     }
 }

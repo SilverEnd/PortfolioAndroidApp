@@ -1,4 +1,4 @@
-package com.erikzuo.portfolioandroidapp.ui.main.work;
+package com.erikzuo.portfolioandroidapp.ui.main.work.personal;
 
 import android.databinding.ObservableField;
 

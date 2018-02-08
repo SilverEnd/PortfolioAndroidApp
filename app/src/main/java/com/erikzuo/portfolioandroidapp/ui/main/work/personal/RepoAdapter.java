@@ -1,4 +1,4 @@
-package com.erikzuo.portfolioandroidapp.ui.main.work;
+package com.erikzuo.portfolioandroidapp.ui.main.work.personal;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,7 +36,7 @@ public class RepoAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
-
+        holder.onBind(position);
     }
 
     @Override
@@ -52,6 +52,7 @@ public class RepoAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public void clearItems() {
         mRepoList.clear();
+        notifyDataSetChanged();
     }
 
 

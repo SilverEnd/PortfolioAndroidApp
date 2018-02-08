@@ -6,7 +6,6 @@ import android.content.Context;
 import com.erikzuo.portfolioandroidapp.data.AppDataManager;
 import com.erikzuo.portfolioandroidapp.data.DataManager;
 import com.erikzuo.portfolioandroidapp.data.remote.GithubService;
-import com.erikzuo.portfolioandroidapp.utils.LiveDataCallAdapterFactory;
 import com.erikzuo.portfolioandroidapp.utils.rx.AppSchedulerProvider;
 import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider;
 

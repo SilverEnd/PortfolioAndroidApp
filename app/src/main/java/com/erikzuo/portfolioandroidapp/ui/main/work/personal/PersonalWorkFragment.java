@@ -1,19 +1,17 @@
-package com.erikzuo.portfolioandroidapp.ui.main.work;
+package com.erikzuo.portfolioandroidapp.ui.main.work.personal;
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 
 import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
-import com.erikzuo.portfolioandroidapp.data.model.Repo;
-import com.erikzuo.portfolioandroidapp.data.remote.ApiResponse;
 import com.erikzuo.portfolioandroidapp.databinding.FragmentPersonalWorkBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.work.WorkViewModel;
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -25,6 +23,15 @@ public class PersonalWorkFragment extends BaseFragment<FragmentPersonalWorkBindi
 
     @Inject
     ViewModelProviderFactory mFactory;
+
+
+    @Inject
+    RepoAdapter mRepoAdapter;
+
+    @Inject
+    LinearLayoutManager mLayoutManager;
+
+
 
     private WorkViewModel mViewModel;
 
@@ -54,11 +61,16 @@ public class PersonalWorkFragment extends BaseFragment<FragmentPersonalWorkBindi
 
     @Override
     public void initViews() {
+        mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        getViewDataBinding().list.setLayoutManager(mLayoutManager);
+        getViewDataBinding().list.setItemAnimator(new DefaultItemAnimator());
+        getViewDataBinding().list.setAdapter(mRepoAdapter);
+
 
         mViewModel.getReposLiveData()
                 .observe(this, listApiResponse -> {
                     if (listApiResponse != null) {
-                        mViewModel.addRepos(listApiResponse.body);
+                        mViewModel.addRepos(listApiResponse);
                     }
                 });
     }

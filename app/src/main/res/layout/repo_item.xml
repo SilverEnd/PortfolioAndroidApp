@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.erikzuo.portfolioandroidapp.ui.main.work.RepoItemViewModel" />
+            type="com.erikzuo.portfolioandroidapp.ui.main.work.personal.RepoItemViewModel" />
 
     </data>
 

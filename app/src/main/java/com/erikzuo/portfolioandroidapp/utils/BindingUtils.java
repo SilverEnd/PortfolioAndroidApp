@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.ImageView;
 
 import com.erikzuo.portfolioandroidapp.data.model.Repo;
-import com.erikzuo.portfolioandroidapp.ui.main.work.RepoAdapter;
+import com.erikzuo.portfolioandroidapp.ui.main.work.personal.RepoAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

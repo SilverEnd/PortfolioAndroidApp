@@ -2,15 +2,22 @@ package com.erikzuo.portfolioandroidapp.di;
 
 import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProvider;
+import android.support.v7.widget.LinearLayoutManager;
 
+import com.erikzuo.portfolioandroidapp.data.model.Repo;
+import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
 import com.erikzuo.portfolioandroidapp.ui.main.MainViewModel;
 import com.erikzuo.portfolioandroidapp.ui.main.about.AboutViewModel;
 import com.erikzuo.portfolioandroidapp.ui.main.home.HomeViewModel;
 import com.erikzuo.portfolioandroidapp.ui.main.work.WorkViewModel;
+import com.erikzuo.portfolioandroidapp.ui.main.work.personal.RepoAdapter;
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
+
+import java.util.ArrayList;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.Provides;
 import dagger.multibindings.IntoMap;
 
 @Module
@@ -37,7 +44,7 @@ public abstract class ViewModelModule {
 
 
 
-
     @Binds
     abstract ViewModelProvider.Factory bindViewModelFactory(ViewModelProviderFactory factory);
+
 }
