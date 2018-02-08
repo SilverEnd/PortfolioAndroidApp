@@ -8,6 +8,9 @@ import android.arch.lifecycle.LiveData;
 
 import com.erikzuo.portfolioandroidapp.data.model.Repo;
 
+import java.util.List;
+
+import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 
@@ -17,5 +20,5 @@ import retrofit2.http.Path;
 public interface GithubService {
 
     @GET("/users/{username}/repos")
-    LiveData<ApiResponse<Repo>> getRepos(@Path("username") String username);
+    Observable<ApiResponse<List<Repo>>> getRepos(@Path("username") String username);
 }

@@ -1,13 +1,19 @@
 package com.erikzuo.portfolioandroidapp.ui.main.work;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 
 import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
+import com.erikzuo.portfolioandroidapp.data.model.Repo;
+import com.erikzuo.portfolioandroidapp.data.remote.ApiResponse;
 import com.erikzuo.portfolioandroidapp.databinding.FragmentPersonalWorkBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -49,5 +55,11 @@ public class PersonalWorkFragment extends BaseFragment<FragmentPersonalWorkBindi
     @Override
     public void initViews() {
 
+        mViewModel.getReposLiveData()
+                .observe(this, listApiResponse -> {
+                    if (listApiResponse != null) {
+                        mViewModel.addRepos(listApiResponse.body);
+                    }
+                });
     }
 }

@@ -1,13 +1,17 @@
 package com.erikzuo.portfolioandroidapp.ui.main;
 
 
+import android.arch.lifecycle.MutableLiveData;
 import android.databinding.ObservableField;
 import android.util.Log;
 
 import com.erikzuo.portfolioandroidapp.data.DataManager;
 import com.erikzuo.portfolioandroidapp.data.model.MyInfo;
+import com.erikzuo.portfolioandroidapp.data.model.Repo;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseViewModel;
 import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -16,7 +20,6 @@ import javax.inject.Inject;
  */
 
 public class MainViewModel extends BaseViewModel<MainNavigator> {
-
 
     @Inject
     public MainViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {

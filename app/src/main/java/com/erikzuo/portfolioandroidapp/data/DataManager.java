@@ -7,6 +7,8 @@ import com.erikzuo.portfolioandroidapp.data.remote.ApiResponse;
 
 import java.util.List;
 
+import io.reactivex.Observable;
+
 /**
  * Created by YifanZuo on 3/2/18.
  */
@@ -17,5 +19,5 @@ public interface DataManager {
 
     String getEmail();
 
-    LiveData<ApiResponse<List<Repo>>> getRepo
+    Observable<ApiResponse<List<Repo>>> getRepos();
 }

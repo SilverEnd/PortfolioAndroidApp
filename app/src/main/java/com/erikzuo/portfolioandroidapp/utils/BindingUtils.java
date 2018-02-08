@@ -1,10 +1,15 @@
 package com.erikzuo.portfolioandroidapp.utils;
 
 import android.databinding.BindingAdapter;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
 
+import com.erikzuo.portfolioandroidapp.data.model.Repo;
+import com.erikzuo.portfolioandroidapp.ui.main.work.RepoAdapter;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 /**
  * Created by Soprano on 6/02/2018.
@@ -21,6 +26,17 @@ public class BindingUtils {
             Picasso.with(imageView.getContext())
                     .load(url)
                     .into(imageView);
+        }
+    }
+
+
+    @BindingAdapter({"adapter"})
+    public static void addRepoItems(RecyclerView recyclerView,
+                                    ArrayList<Repo> repos) {
+        RepoAdapter adapter = (RepoAdapter) recyclerView.getAdapter();
+        if(adapter != null) {
+            adapter.clearItems();
+            adapter.addItems(repos);
         }
     }
 }

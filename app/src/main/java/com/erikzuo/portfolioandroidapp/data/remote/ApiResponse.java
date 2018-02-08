@@ -22,13 +22,19 @@ public class ApiResponse<T> {
 
     private static final Pattern LINK_PATTERN = Pattern
             .compile("<([^>]*)>[\\s]*;[\\s]*rel=\"([a-zA-Z0-9]+)\"");
+
     private static final Pattern PAGE_PATTERN = Pattern.compile("\\bpage=(\\d+)");
+
     private static final String NEXT_LINK = "next";
+
     public final int code;
+
     @Nullable
     public final T body;
+
     @Nullable
     public final String errorMessage;
+
     @NonNull
     public final Map<String, String> links;
 
