@@ -40,6 +40,9 @@ dependencies {
     implementation "android.arch.lifecycle:extensions:$rootProject.androidArchVersion"
     annotationProcessor "android.arch.lifecycle:compiler:$rootProject.androidArchVersion"
 
+    // Play & Firebase services
+    implementation "com.google.firebase:firebase-core:$rootProject.playServiceVersion"
+
     // Dependency injection
     implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
     implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
@@ -71,3 +74,5 @@ dependencies {
     androidTestImplementation "org.mockito:mockito-core:$rootProject.mockitoVersion"
     androidTestAnnotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
 }
+
+apply plugin: 'com.google.gms.google-services'
