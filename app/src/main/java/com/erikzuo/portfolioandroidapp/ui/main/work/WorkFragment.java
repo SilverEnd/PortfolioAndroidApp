@@ -64,8 +64,8 @@ public class WorkFragment extends BaseFragment<FragmentWorkBinding, WorkViewMode
 
     @Override
     public void initViews() {
-        getViewDataBinding().tabLayout.addTab(getViewDataBinding().tabLayout.newTab().setText(R.string.industry_work));
-        getViewDataBinding().tabLayout.addTab(getViewDataBinding().tabLayout.newTab().setText(R.string.personal_work));
+        getViewDataBinding().tabLayout.addTab(getViewDataBinding().tabLayout.newTab().setText(R.string.industry_work).setIcon(R.drawable.ic_work));
+        getViewDataBinding().tabLayout.addTab(getViewDataBinding().tabLayout.newTab().setText(R.string.personal_work).setIcon(R.drawable.ic_github));
         getViewDataBinding().tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

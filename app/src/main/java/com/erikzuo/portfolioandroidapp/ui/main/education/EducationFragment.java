@@ -1,4 +1,4 @@
-package com.erikzuo.portfolioandroidapp.ui.main.work.personal;
+package com.erikzuo.portfolioandroidapp.ui.main.education;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -7,49 +7,50 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.erikzuo.portfolioandroidapp.BR;
 import com.erikzuo.portfolioandroidapp.R;
-import com.erikzuo.portfolioandroidapp.databinding.FragmentPersonalWorkBinding;
+import com.erikzuo.portfolioandroidapp.databinding.FragmentEducationBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
-import com.erikzuo.portfolioandroidapp.ui.main.work.WorkViewModel;
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory;
 
 import javax.inject.Inject;
 
 /**
- * Created by Soprano on 7/02/2018.
+ * Created by Soprano on 9/02/2018.
  */
 
-public class PersonalWorkFragment extends BaseFragment<FragmentPersonalWorkBinding, WorkViewModel> {
+public class EducationFragment extends BaseFragment<FragmentEducationBinding, EducationViewModel> {
 
     @Inject
     ViewModelProviderFactory mFactory;
 
-
     @Inject
-    RepoAdapter mAdapter;
+    EducationAdapter mAdapter;
 
     @Inject
     LinearLayoutManager mLayoutManager;
 
 
 
-    private WorkViewModel mViewModel;
+    private EducationViewModel mViewModel;
 
 
-    public static PersonalWorkFragment newInstance() {
+    public static EducationFragment newInstance() {
         Bundle args = new Bundle();
-        PersonalWorkFragment fragment = new PersonalWorkFragment();
+        EducationFragment fragment = new EducationFragment();
         fragment.setArguments(args);
         return fragment;
     }
 
+
+
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_personal_work;
+        return R.layout.fragment_education;
     }
 
     @Override
-    public WorkViewModel getViewModel() {
-        mViewModel = ViewModelProviders.of(this, mFactory).get(WorkViewModel.class);
+    public EducationViewModel getViewModel() {
+        mViewModel = ViewModelProviders.of(this, mFactory).get(EducationViewModel.class);
+
         return mViewModel;
     }
 
@@ -64,6 +65,5 @@ public class PersonalWorkFragment extends BaseFragment<FragmentPersonalWorkBindi
         getViewDataBinding().list.setLayoutManager(mLayoutManager);
         getViewDataBinding().list.setItemAnimator(new DefaultItemAnimator());
         getViewDataBinding().list.setAdapter(mAdapter);
-
     }
 }

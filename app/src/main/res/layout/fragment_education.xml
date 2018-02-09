@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -8,21 +9,23 @@
 
         <variable
             name="viewModel"
-            type="com.erikzuo.portfolioandroidapp.ui.main.work.WorkViewModel" />
+            type="com.erikzuo.portfolioandroidapp.ui.main.education.EducationViewModel"/>
 
     </data>
 
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list"
+            android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:adapter="@{viewModel.repoList}"
-            android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}" />
+            app:adapter="@{viewModel.educationList}"/>
+
 
 
         <android.support.v4.widget.ContentLoadingProgressBar
@@ -33,4 +36,5 @@
             android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
 
     </FrameLayout>
+
 </layout>

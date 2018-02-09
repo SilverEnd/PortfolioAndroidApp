@@ -16,5 +16,7 @@ public class AboutViewModel extends BaseViewModel<AboutNavigator> {
     @Inject
     public AboutViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
+
     }
+
 }

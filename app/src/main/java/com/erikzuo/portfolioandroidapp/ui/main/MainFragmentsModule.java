@@ -1,6 +1,8 @@
 package com.erikzuo.portfolioandroidapp.ui.main;
 
 import com.erikzuo.portfolioandroidapp.ui.main.about.AboutFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.education.EducationFragment;
+import com.erikzuo.portfolioandroidapp.ui.main.education.EducationFragmentModule;
 import com.erikzuo.portfolioandroidapp.ui.main.home.HomeFragment;
 import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragment;
 import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragmentModule;
@@ -24,4 +26,8 @@ public abstract class MainFragmentsModule {
 
     @ContributesAndroidInjector(modules = {WorkFragmentsProvider.class, WorkFragmentModule.class})
     abstract WorkFragment contributeWorkFragment();
+
+
+    @ContributesAndroidInjector(modules = EducationFragmentModule.class)
+    abstract EducationFragment contributeEducationFragment();
 }

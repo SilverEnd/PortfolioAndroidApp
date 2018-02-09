@@ -8,6 +8,7 @@ import com.erikzuo.portfolioandroidapp.data.model.Repo;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseFragment;
 import com.erikzuo.portfolioandroidapp.ui.main.MainViewModel;
 import com.erikzuo.portfolioandroidapp.ui.main.about.AboutViewModel;
+import com.erikzuo.portfolioandroidapp.ui.main.education.EducationViewModel;
 import com.erikzuo.portfolioandroidapp.ui.main.home.HomeViewModel;
 import com.erikzuo.portfolioandroidapp.ui.main.work.WorkViewModel;
 import com.erikzuo.portfolioandroidapp.ui.main.work.personal.RepoAdapter;
@@ -42,6 +43,10 @@ public abstract class ViewModelModule {
     @ViewModelKey(WorkViewModel.class)
     abstract ViewModel bindWorkViewModel(WorkViewModel viewModel);
 
+    @Binds
+    @IntoMap
+    @ViewModelKey(EducationViewModel.class)
+    abstract ViewModel bindEducationViewModel(EducationViewModel viewModel);
 
 
     @Binds

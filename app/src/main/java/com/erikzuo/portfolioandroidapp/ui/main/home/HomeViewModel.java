@@ -12,12 +12,29 @@ import javax.inject.Inject;
 
 public class HomeViewModel extends BaseViewModel<HomeNavigator> {
 
+
     @Inject
     public HomeViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
+
+        loadMyInfo();
     }
 
-    public void setPageTitle(String title){
-        super.setPageTitle(title);
+    private void loadMyInfo() {
+        setIsLoading(true);
+        getCompositeDisposable().add(getDataManager().getMyInfo()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(
+                        myInfo -> {
+                            setMyInfo(myInfo);
+                            setIsLoading(false);
+                        }, throwable -> {
+
+                        }
+                )
+        );
     }
-}
+
+
+ }

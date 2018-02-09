@@ -14,6 +14,8 @@ public class MyInfo {
     private String title;
     private String avatarUrl;
 
+    public MyInfo() {}
+
     public MyInfo(String name, String email, String title, String avatarUrl) {
         this.name = name;
         this.email = email;

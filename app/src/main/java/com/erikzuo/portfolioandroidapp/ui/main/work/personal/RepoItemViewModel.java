@@ -1,6 +1,8 @@
 package com.erikzuo.portfolioandroidapp.ui.main.work.personal;
 
+import android.content.Intent;
 import android.databinding.ObservableField;
+import android.net.Uri;
 
 import com.erikzuo.portfolioandroidapp.data.DataManager;
 import com.erikzuo.portfolioandroidapp.data.model.Repo;
@@ -13,14 +15,28 @@ import javax.inject.Inject;
  * Created by Soprano on 8/02/2018.
  */
 
-public class RepoItemViewModel{
+public class RepoItemViewModel {
+    public interface RepoItemListener {
+        void onItemClick(String url);
+    }
+
 
     private Repo mRepo;
-    public ObservableField<String> name;
+    public RepoItemListener mListener;
 
-    public RepoItemViewModel(Repo repo) {
+    public ObservableField<String> title;
+    public ObservableField<String> content;
+
+    public RepoItemViewModel(Repo repo, RepoItemListener listener) {
         this.mRepo = repo;
+        this.mListener = listener;
 
-        name = new ObservableField<>(mRepo.getName());
+        title = new ObservableField<>(mRepo.getName());
+        content = new ObservableField<>(mRepo.getDescription());
+    }
+
+    public void onItemClick() {
+        if (mListener != null)
+            mListener.onItemClick(mRepo.getLink());
     }
 }

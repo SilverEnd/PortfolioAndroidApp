@@ -1,6 +1,9 @@
 package com.erikzuo.portfolioandroidapp.data;
 
+import com.erikzuo.portfolioandroidapp.data.model.Education;
+import com.erikzuo.portfolioandroidapp.data.model.MyInfo;
 import com.erikzuo.portfolioandroidapp.data.model.Repo;
+import com.erikzuo.portfolioandroidapp.data.model.Work;
 
 import java.util.List;
 
@@ -12,9 +15,11 @@ import io.reactivex.Observable;
 
 public interface DataManager {
 
-    String getName();
-
-    String getEmail();
+    Observable<MyInfo> getMyInfo();
 
     Observable<List<Repo>> getRepoListApiCall();
+
+    Observable<List<Education>> getEducationList();
+
+    Observable<List<Work>> getWorkList();
 }

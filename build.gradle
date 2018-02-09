@@ -19,6 +19,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -50,6 +51,7 @@ ext {
     retrofitVersion = '2.3.0'
     circleImageviewVersion = '2.2.0'
     picassoVersion = '2.5.2'
+    mpAndroidChartVersion = 'v3.0.3'
 
     //Test dependencies
     junitVersion = '4.12'

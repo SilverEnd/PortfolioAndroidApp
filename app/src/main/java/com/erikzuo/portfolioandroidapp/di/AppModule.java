@@ -8,6 +8,7 @@ import com.erikzuo.portfolioandroidapp.data.DataManager;
 import com.erikzuo.portfolioandroidapp.data.remote.GithubService;
 import com.erikzuo.portfolioandroidapp.utils.rx.AppSchedulerProvider;
 import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider;
+import com.google.firebase.database.FirebaseDatabase;
 
 import javax.inject.Singleton;
 
@@ -51,5 +52,11 @@ public class AppModule {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build()
                 .create(GithubService.class);
+    }
+
+    @Provides
+    @Singleton
+    FirebaseDatabase provideFirebaseDatabase() {
+        return FirebaseDatabase.getInstance();
     }
 }

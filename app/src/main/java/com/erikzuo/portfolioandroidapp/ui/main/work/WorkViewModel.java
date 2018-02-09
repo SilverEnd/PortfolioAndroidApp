@@ -12,13 +12,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.functions.Consumer;
+
 /**
  * Created by Soprano on 7/02/2018.
  */
 
 public class WorkViewModel extends BaseViewModel<WorkNavigator> {
 
-    private final MutableLiveData<List<Repo>> reposLiveData = new MutableLiveData<>();
     private final ObservableArrayList<Repo> repoList = new ObservableArrayList<>();
 
     @Inject
@@ -29,26 +30,22 @@ public class WorkViewModel extends BaseViewModel<WorkNavigator> {
     }
 
     public void loadRepos() {
+        setIsLoading(true);
         getCompositeDisposable().add(getDataManager()
                 .getRepoListApiCall()
                 .subscribeOn(getSchedulerProvider().io())
                 .observeOn(getSchedulerProvider().ui())
                 .subscribe(
-                        reposLiveData::setValue
+                        repos -> {
+                            repoList.addAll(repos);
+                            setIsLoading(false);
+                        }
                 )
         );
-    }
-
-    public MutableLiveData<List<Repo>> getReposLiveData() {
-        return reposLiveData;
     }
 
     public ObservableArrayList<Repo> getRepoList() {
         return repoList;
     }
 
-    public void addRepos(List<Repo> repos) {
-        repoList.clear();
-        repoList.addAll(repos);
-    }
 }

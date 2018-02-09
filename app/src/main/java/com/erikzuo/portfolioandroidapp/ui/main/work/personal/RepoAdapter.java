@@ -1,11 +1,13 @@
 package com.erikzuo.portfolioandroidapp.ui.main.work.personal;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.erikzuo.portfolioandroidapp.data.model.Repo;
-import com.erikzuo.portfolioandroidapp.databinding.RepoItemBinding;
+import com.erikzuo.portfolioandroidapp.databinding.ItemRepoBinding;
 import com.erikzuo.portfolioandroidapp.ui.base.BaseViewHolder;
 
 import java.util.List;
@@ -26,7 +28,7 @@ public class RepoAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     @Override
     public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RepoItemBinding repoViewBinding = RepoItemBinding.inflate(
+        ItemRepoBinding repoViewBinding = ItemRepoBinding.inflate(
                 LayoutInflater.from(parent.getContext()),
                 parent,
                 false);
@@ -58,11 +60,10 @@ public class RepoAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
     public class RepoViewHolder extends BaseViewHolder {
 
-        private RepoItemBinding mBinding;
-
+        private ItemRepoBinding mBinding;
         private RepoItemViewModel mViewModel;
 
-        public RepoViewHolder(RepoItemBinding binding) {
+        public RepoViewHolder(ItemRepoBinding binding) {
             super(binding.getRoot());
             this.mBinding = binding;
         }
@@ -72,7 +73,15 @@ public class RepoAdapter extends RecyclerView.Adapter<BaseViewHolder> {
 
             final Repo repo = mRepoList.get(position);
 
-            mViewModel = new RepoItemViewModel(repo);
+            mViewModel = new RepoItemViewModel(repo, url -> {
+                if (url != null) {
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_VIEW);
+                    intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                    intent.setData(Uri.parse(url));
+                    itemView.getContext().startActivity(intent);
+                }
+            });
 
             mBinding.setViewModel(mViewModel);
 

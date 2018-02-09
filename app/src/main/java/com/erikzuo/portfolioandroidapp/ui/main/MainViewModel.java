@@ -25,7 +25,22 @@ public class MainViewModel extends BaseViewModel<MainNavigator> {
     public MainViewModel(DataManager dataManager, SchedulerProvider schedulerProvider) {
         super(dataManager, schedulerProvider);
 
+        loadMyInfo();
+    }
 
+
+    private void loadMyInfo() {
+        getCompositeDisposable().add(getDataManager().getMyInfo()
+                .subscribeOn(getSchedulerProvider().io())
+                .observeOn(getSchedulerProvider().ui())
+                .subscribe(
+                        myInfo -> {
+                            setMyInfo(myInfo);
+                        }, throwable -> {
+
+                        }
+                )
+        );
     }
 
 }

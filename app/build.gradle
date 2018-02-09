@@ -42,6 +42,7 @@ dependencies {
 
     // Play & Firebase services
     implementation "com.google.firebase:firebase-core:$rootProject.playServiceVersion"
+    implementation "com.google.firebase:firebase-database:$rootProject.playServiceVersion"
 
     // Dependency injection
     implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
@@ -67,6 +68,10 @@ dependencies {
 
     // Picasso
     implementation "com.squareup.picasso:picasso:$rootProject.picassoVersion"
+
+    // Misc
+    implementation "com.github.PhilJay:MPAndroidChart:$rootProject.mpAndroidChartVersion"
+
 
     // UI Testing
     androidTestImplementation "com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion"
