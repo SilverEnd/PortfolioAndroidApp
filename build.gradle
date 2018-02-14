@@ -1,7 +1,8 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
-    
+    ext.kotlin_version = '1.2.21'
+
     repositories {
         google()
         jcenter()
@@ -9,6 +10,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath 'com.google.gms:google-services:3.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -51,7 +53,7 @@ ext {
     retrofitVersion = '2.3.0'
     circleImageviewVersion = '2.2.0'
     picassoVersion = '2.5.2'
-    mpAndroidChartVersion = 'v3.0.3'
+    circleProgressVersion = '1.1.1'
 
     //Test dependencies
     junitVersion = '4.12'
