@@ -36,19 +36,20 @@ object BindingUtils {
     @BindingAdapter("adapter")
     fun addRepoItems(recyclerView: RecyclerView,
                      repos: ArrayList<Repo>) {
-        val adapter = recyclerView.adapter as RepoAdapter
-        adapter.clearItems()
-        adapter.addItems(repos)
-    }
+        val adapter = recyclerView.adapter as RepoAdapter?
 
+        adapter?.clearItems()
+        adapter?.addItems(repos)
+    }
 
     @JvmStatic
     @BindingAdapter("adapter")
     fun addEducationItems(recyclerView: RecyclerView,
                           educations: ArrayList<Education>) {
-        val adapter = recyclerView.adapter as EducationAdapter
-        adapter.clearItems()
-        adapter.addItems(educations)
+        val adapter = recyclerView.adapter as EducationAdapter?
+
+        adapter?.clearItems()
+        adapter?.addItems(educations)
     }
 
 }

@@ -48,9 +48,7 @@ constructor(private val context: Context, private val githubService: GithubServi
             firebaseDatabase.getReference("education")
                     .addValueEventListener(object : ValueEventListener {
                         override fun onDataChange(dataSnapshot: DataSnapshot) {
-                            e.onNext(dataSnapshot.getValue(object : GenericTypeIndicator<List<Education>>() {
-
-                            }))
+                            e.onNext(dataSnapshot.getValue(object : GenericTypeIndicator<List<@JvmSuppressWildcards Education>>() {}))
                         }
 
                         override fun onCancelled(databaseError: DatabaseError) {

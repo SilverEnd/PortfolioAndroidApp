@@ -48,9 +48,24 @@
                 </android.support.design.widget.AppBarLayout>
 
                 <FrameLayout
-                    android:id="@+id/clRootView"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent" >
+
+                    <FrameLayout
+                        android:id="@+id/clRootView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end|bottom"
+                        android:src="@drawable/ic_email"
+                        android:layout_margin="32dp"/>
+
+                </FrameLayout>
+
 
             </LinearLayout>
 
@@ -75,14 +90,6 @@
 
         </android.support.v4.widget.DrawerLayout>
 
-
-
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:src="@drawable/ic_email"
-            android:layout_margin="32dp"/>
 
 
     </FrameLayout>
