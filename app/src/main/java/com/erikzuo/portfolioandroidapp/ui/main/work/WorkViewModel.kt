@@ -10,7 +10,7 @@ import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider
 import javax.inject.Inject
 
 /**
- * Created by Soprano on 7/02/2018.
+ * Created by YifanZuo on 7/02/2018.
  */
 
 class WorkViewModel @Inject

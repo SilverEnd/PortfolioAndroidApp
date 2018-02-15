@@ -5,7 +5,7 @@ import android.databinding.Bindable
 import android.databinding.Observable
 
 /**
- * Created by Soprano on 6/02/2018.
+ * Created by YifanZuo on 6/02/2018.
  */
 
 class MyInfo {

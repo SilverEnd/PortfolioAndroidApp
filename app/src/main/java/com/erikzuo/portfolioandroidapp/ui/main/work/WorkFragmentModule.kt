@@ -4,7 +4,7 @@ import dagger.Module
 import dagger.Provides
 
 /**
- * Created by Soprano on 7/02/2018.
+ * Created by YifanZuo on 7/02/2018.
  */
 
 @Module

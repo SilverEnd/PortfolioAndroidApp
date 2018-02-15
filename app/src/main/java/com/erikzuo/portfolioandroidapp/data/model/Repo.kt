@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import java.security.acl.Owner
 
 /**
- * Created by Soprano on 7/02/2018.
+ * Created by YifanZuo on 7/02/2018.
  */
 
 class Repo(var id: Int, @field:SerializedName("name")

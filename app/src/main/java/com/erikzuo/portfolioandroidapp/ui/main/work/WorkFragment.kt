@@ -18,7 +18,7 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 
 /**
- * Created by Soprano on 7/02/2018.
+ * Created by YifanZuo on 7/02/2018.
  */
 
 class WorkFragment : BaseFragment<FragmentWorkBinding, WorkViewModel>(), WorkNavigator, HasSupportFragmentInjector {

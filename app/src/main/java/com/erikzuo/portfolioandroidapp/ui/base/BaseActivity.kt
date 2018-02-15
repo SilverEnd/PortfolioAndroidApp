@@ -19,7 +19,7 @@ import dagger.android.AndroidInjection
 
 abstract class BaseActivity<T : ViewDataBinding, out V : BaseViewModel<*>> : AppCompatActivity(), BaseFragment.Callback {
 
-    internal lateinit var binding: T
+    internal lateinit var viewDatabinding: T
 
     abstract val viewModel: V
 
@@ -37,9 +37,9 @@ abstract class BaseActivity<T : ViewDataBinding, out V : BaseViewModel<*>> : App
     }
 
     private fun performDataBinding() {
-        binding = DataBindingUtil.setContentView(this, layoutId)
-        binding.setVariable(bindingVariable, viewModel)
-        binding.executePendingBindings()
+        viewDatabinding = DataBindingUtil.setContentView(this, layoutId)
+        viewDatabinding.setVariable(bindingVariable, viewModel)
+        viewDatabinding.executePendingBindings()
     }
 
     @TargetApi(Build.VERSION_CODES.M)

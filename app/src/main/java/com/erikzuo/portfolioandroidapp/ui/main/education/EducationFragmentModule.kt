@@ -9,7 +9,7 @@ import dagger.Module
 import dagger.Provides
 
 /**
- * Created by Soprano on 9/02/2018.
+ * Created by YifanZuo on 9/02/2018.
  */
 
 @Module

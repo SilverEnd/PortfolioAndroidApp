@@ -1,7 +1,7 @@
 package com.erikzuo.portfolioandroidapp.ui.main.work
 
 /**
- * Created by Soprano on 7/02/2018.
+ * Created by YifanZuo on 7/02/2018.
  */
 
 interface WorkNavigator

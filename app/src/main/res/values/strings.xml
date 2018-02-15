@@ -16,4 +16,7 @@
     <string name="open_drawer">Drawer Open</string>
     <string name="close_drawer">Drawer Close</string>
 
+    <!--Contact-->
+    <string name="full_name">Full name</string>
+    <string name="message">Message</string>
 </resources>

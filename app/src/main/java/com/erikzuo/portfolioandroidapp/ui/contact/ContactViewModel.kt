@@ -7,7 +7,7 @@ import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider
 import javax.inject.Inject
 
 /**
- * Created by Soprano on 12/02/2018.
+ * Created by YifanZuo on 12/02/2018.
  */
 
 class ContactViewModel @Inject

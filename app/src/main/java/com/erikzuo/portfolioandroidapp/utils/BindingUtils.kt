@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso
 import java.util.ArrayList
 
 /**
- * Created by Soprano on 6/02/2018.
+ * Created by YifanZuo on 6/02/2018.
  */
 
 object BindingUtils {

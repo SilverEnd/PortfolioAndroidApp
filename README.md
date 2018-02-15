@@ -6,6 +6,8 @@ This App demonstrates my ability of developing industrial-standard Android Appli
 
 Technologies involved in this project
 
+Language - Kotlin
+
 Model-View-ViewModel Architecture
 
 Android Architecture Component - LiveData, ViewModel

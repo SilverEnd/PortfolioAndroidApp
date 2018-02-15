@@ -12,7 +12,7 @@ import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider
 import javax.inject.Inject
 
 /**
- * Created by Soprano on 8/02/2018.
+ * Created by YifanZuo on 8/02/2018.
  */
 
 class RepoItemViewModel(private val mRepo: Repo, private var mListener: RepoItemListener?) {

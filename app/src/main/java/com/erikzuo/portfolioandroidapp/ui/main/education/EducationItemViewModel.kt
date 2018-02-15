@@ -5,7 +5,7 @@ import android.databinding.ObservableField
 import com.erikzuo.portfolioandroidapp.data.model.Education
 
 /**
- * Created by Soprano on 9/02/2018.
+ * Created by YifanZuo on 9/02/2018.
  */
 
 class EducationItemViewModel(private val mEducation: Education) {

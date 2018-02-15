@@ -9,7 +9,7 @@ import com.erikzuo.portfolioandroidapp.databinding.ItemEducationBinding
 import com.erikzuo.portfolioandroidapp.ui.base.BaseViewHolder
 
 /**
- * Created by Soprano on 9/02/2018.
+ * Created by YifanZuo on 9/02/2018.
  */
 
 class EducationAdapter(private val mEducationList: MutableList<Education>) : RecyclerView.Adapter<BaseViewHolder>() {

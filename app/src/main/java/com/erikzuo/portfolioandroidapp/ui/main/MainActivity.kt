@@ -71,8 +71,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
     private fun setupNavDrawer() {
         val drawerToggle = object : ActionBarDrawerToggle(
                 this,
-                binding.drawerView,
-                binding.toolbar,
+                viewDatabinding.drawerView,
+                viewDatabinding.toolbar,
                 R.string.open_drawer,
                 R.string.close_drawer) {
             override fun onDrawerOpened(drawerView: View) {
@@ -81,7 +81,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
             }
         }
 
-        binding.drawerView.addDrawerListener(drawerToggle)
+        viewDatabinding.drawerView.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
     }
 
@@ -89,14 +89,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         val navHeaderMainBinding = DataBindingUtil.inflate<NavHeaderMainBinding>(
                 layoutInflater,
                 R.layout.nav_header_main,
-                binding.navigationView,
+                viewDatabinding.navigationView,
                 false)
 
-        binding.navigationView.addHeaderView(navHeaderMainBinding.root)
+        viewDatabinding.navigationView.addHeaderView(navHeaderMainBinding.root)
         navHeaderMainBinding.viewModel = this.viewModel
 
-        binding.navigationView.setNavigationItemSelectedListener { item ->
-            binding.drawerView.closeDrawer(GravityCompat.START)
+        viewDatabinding.navigationView.setNavigationItemSelectedListener { item ->
+            viewDatabinding.drawerView.closeDrawer(GravityCompat.START)
 
             this.viewModel.setIsLoading(false)
             when (item.itemId) {

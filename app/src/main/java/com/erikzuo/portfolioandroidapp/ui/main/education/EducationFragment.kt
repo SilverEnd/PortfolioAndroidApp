@@ -14,7 +14,7 @@ import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory
 import javax.inject.Inject
 
 /**
- * Created by Soprano on 9/02/2018.
+ * Created by YifanZuo on 9/02/2018.
  */
 
 class EducationFragment : BaseFragment<FragmentEducationBinding, EducationViewModel>() {

@@ -8,7 +8,7 @@ import com.erikzuo.portfolioandroidapp.ui.main.work.industry.IndustryWorkFragmen
 import com.erikzuo.portfolioandroidapp.ui.main.work.personal.PersonalWorkFragment
 
 /**
- * Created by Soprano on 7/02/2018.
+ * Created by YifanZuo on 7/02/2018.
  */
 
 class WorkPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {

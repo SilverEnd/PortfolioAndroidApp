@@ -11,7 +11,7 @@ import com.erikzuo.portfolioandroidapp.databinding.ItemRepoBinding
 import com.erikzuo.portfolioandroidapp.ui.base.BaseViewHolder
 
 /**
- * Created by Soprano on 8/02/2018.
+ * Created by YifanZuo on 8/02/2018.
  */
 
 class RepoAdapter(private val mRepoList: MutableList<Repo>) : RecyclerView.Adapter<BaseViewHolder>() {
