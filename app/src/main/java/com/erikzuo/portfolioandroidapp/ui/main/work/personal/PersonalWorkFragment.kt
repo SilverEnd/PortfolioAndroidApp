@@ -23,7 +23,6 @@ class PersonalWorkFragment : BaseFragment<FragmentPersonalWorkBinding, WorkViewM
     @Inject
     internal lateinit var mFactory: ViewModelProviderFactory
 
-
     @Inject
     internal lateinit var mAdapter: RepoAdapter
 

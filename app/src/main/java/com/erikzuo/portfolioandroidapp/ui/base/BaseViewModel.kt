@@ -43,4 +43,20 @@ abstract class BaseViewModel<N>(val dataManager: DataManager, val schedulerProvi
         compositeDisposable.dispose()
         super.onCleared()
     }
+
+    fun loadMyInfo() {
+        setIsLoading(true)
+        compositeDisposable.add(dataManager.getMyInfo()
+                .subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.ui())
+                .subscribe(
+                        { myInfo ->
+                            setMyInfo(myInfo)
+                            setIsLoading(false)
+                        }
+                ) { throwable ->
+
+                }
+        )
+    }
 }

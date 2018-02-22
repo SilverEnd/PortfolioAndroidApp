@@ -1,9 +1,6 @@
 package com.erikzuo.portfolioandroidapp.data
 
-import com.erikzuo.portfolioandroidapp.data.model.Education
-import com.erikzuo.portfolioandroidapp.data.model.MyInfo
-import com.erikzuo.portfolioandroidapp.data.model.Repo
-import com.erikzuo.portfolioandroidapp.data.model.Work
+import com.erikzuo.portfolioandroidapp.data.model.*
 
 import io.reactivex.Observable
 
@@ -13,11 +10,11 @@ import io.reactivex.Observable
 
 interface DataManager {
 
-    val myInfo: Observable<MyInfo>
+    fun getMyInfo(): Observable<MyInfo>
 
-    val repoListApiCall: Observable<List<Repo>>
+    fun getRepoListApiCall(): Observable<List<Repo>>
 
-    val educationList: Observable<List<Education>>
+    fun getEducationList(): Observable<List<Education>>
 
-//    val workList: Observable<List<Work>>
+    fun getSkillList(): Observable<List<Skill>>
 }

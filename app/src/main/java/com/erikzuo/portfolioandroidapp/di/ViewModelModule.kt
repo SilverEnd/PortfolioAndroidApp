@@ -3,11 +3,11 @@ package com.erikzuo.portfolioandroidapp.di
 import android.arch.lifecycle.ViewModel
 import android.arch.lifecycle.ViewModelProvider
 
-import com.erikzuo.portfolioandroidapp.ui.contact.ContactViewModel
-import com.erikzuo.portfolioandroidapp.ui.main.MainViewModel
+ import com.erikzuo.portfolioandroidapp.ui.main.MainViewModel
 import com.erikzuo.portfolioandroidapp.ui.main.education.EducationViewModel
 import com.erikzuo.portfolioandroidapp.ui.main.home.HomeViewModel
 import com.erikzuo.portfolioandroidapp.ui.main.work.WorkViewModel
+import com.erikzuo.portfolioandroidapp.ui.setting.SettingsViewModel
 import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory
 
 import dagger.Binds
@@ -39,8 +39,8 @@ abstract class ViewModelModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(ContactViewModel::class)
-    abstract fun bindContactViewModel(viewModel: ContactViewModel): ViewModel
+    @ViewModelKey(SettingsViewModel::class)
+    abstract fun bindSettingsViewModel(viewModel: SettingsViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelProviderFactory): ViewModelProvider.Factory

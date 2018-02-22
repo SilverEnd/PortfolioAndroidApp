@@ -5,7 +5,7 @@
     <string name="name"></string>
 
     <string name="home">Home</string>
-    <string name="contact">Contact</string>
+    <string name="setting">Settings</string>
     <string name="education">Education</string>
     <string name="work">Work</string>
 
@@ -19,4 +19,11 @@
     <!--Contact-->
     <string name="full_name">Full name</string>
     <string name="message">Message</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!--Home-->
+    <string name="label_java">JAVA</string>
+    <string name="label_android">Android</string>
+    <string name="label_kotlin">Kotlin</string>
+
 </resources>

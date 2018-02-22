@@ -2,6 +2,8 @@ package com.erikzuo.portfolioandroidapp.ui.main.home
 
 import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.LinearLayoutManager
 
 import com.erikzuo.portfolioandroidapp.BR
 import com.erikzuo.portfolioandroidapp.R
@@ -20,6 +22,13 @@ class HomeFragment : BaseFragment<FragmenHomeBinding, HomeViewModel>(), HomeNavi
     @Inject
     internal lateinit var mFactory: ViewModelProviderFactory
 
+    @Inject
+    internal lateinit var mAdapter: SkillAdapter
+
+    @Inject
+    internal lateinit var mLayoutManager: LinearLayoutManager
+
+
     private lateinit var mViewModel: HomeViewModel
 
 
@@ -37,7 +46,11 @@ class HomeFragment : BaseFragment<FragmenHomeBinding, HomeViewModel>(), HomeNavi
         get() = R.layout.fragmen_home
 
     override fun initViews() {
-
+        mLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        viewDataBinding.skillList.layoutManager = mLayoutManager
+        viewDataBinding.skillList.itemAnimator = DefaultItemAnimator()
+        viewDataBinding.skillList.adapter = mAdapter
+        viewDataBinding.skillList.isNestedScrollingEnabled = false
     }
 
     companion object {

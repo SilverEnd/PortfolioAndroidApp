@@ -3,6 +3,7 @@ package com.erikzuo.portfolioandroidapp.ui.main
 import com.erikzuo.portfolioandroidapp.ui.main.education.EducationFragment
 import com.erikzuo.portfolioandroidapp.ui.main.education.EducationFragmentModule
 import com.erikzuo.portfolioandroidapp.ui.main.home.HomeFragment
+import com.erikzuo.portfolioandroidapp.ui.main.home.HomeFragmentModule
 import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragment
 import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragmentModule
 import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragmentsProvider
@@ -17,7 +18,7 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class MainFragmentsModule {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = arrayOf(HomeFragmentModule::class))
     internal abstract fun contributeHomeFragment(): HomeFragment
 
 

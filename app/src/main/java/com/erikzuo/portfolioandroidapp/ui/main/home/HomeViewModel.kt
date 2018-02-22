@@ -1,10 +1,13 @@
 package com.erikzuo.portfolioandroidapp.ui.main.home
 
-import android.databinding.ObservableInt
 
+import android.databinding.ObservableArrayList
+import android.util.Log
 import com.erikzuo.portfolioandroidapp.data.DataManager
+import com.erikzuo.portfolioandroidapp.data.model.Skill
 import com.erikzuo.portfolioandroidapp.ui.base.BaseViewModel
 import com.erikzuo.portfolioandroidapp.utils.rx.SchedulerProvider
+import java.util.logging.Logger
 
 import javax.inject.Inject
 
@@ -13,29 +16,27 @@ import javax.inject.Inject
  */
 
 class HomeViewModel
-//    private final ObservableInt m
-
 @Inject
 constructor(dataManager: DataManager, schedulerProvider: SchedulerProvider) : BaseViewModel<HomeNavigator>(dataManager, schedulerProvider) {
+
+    val skillList = ObservableArrayList<Skill>()
+
     init {
         loadMyInfo()
+        loadSkills()
     }
 
-    private fun loadMyInfo() {
-        setIsLoading(true)
-        compositeDisposable.add(dataManager.myInfo
+    private fun loadSkills() {
+        compositeDisposable.add(dataManager.getSkillList()
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .subscribe(
-                        { myInfo ->
-                            setMyInfo(myInfo)
-                            setIsLoading(false)
+                        { skills ->
+                            skillList.addAll(skills)
                         }
                 ) { throwable ->
 
                 }
         )
     }
-
-
 }

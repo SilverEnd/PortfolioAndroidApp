@@ -26,7 +26,7 @@ constructor(dataManager: DataManager, schedulerProvider: SchedulerProvider) : Ba
     private fun loadEducation() {
         setIsLoading(true)
         compositeDisposable.add(dataManager
-                .educationList
+                .getEducationList()
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .subscribe { educations ->

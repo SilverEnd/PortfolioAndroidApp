@@ -1,11 +1,11 @@
 package com.erikzuo.portfolioandroidapp.di
 
 
-import com.erikzuo.portfolioandroidapp.ui.contact.ContactActivity
-import com.erikzuo.portfolioandroidapp.ui.main.MainActivity
+ import com.erikzuo.portfolioandroidapp.ui.main.MainActivity
 import com.erikzuo.portfolioandroidapp.ui.main.MainFragmentsModule
+ import com.erikzuo.portfolioandroidapp.ui.setting.SettingsActivity
 
-import dagger.Module
+ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 /**
@@ -19,5 +19,5 @@ abstract class ActivityBuilderModule {
     internal abstract fun contributeMainActivity(): MainActivity
 
     @ContributesAndroidInjector
-    internal abstract fun contributeContactActivity(): ContactActivity
+    internal abstract fun contributeSettingsActivity(): SettingsActivity
 }

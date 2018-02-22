@@ -17,10 +17,12 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ScrollView
+        <android.support.v4.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fillViewport="true"
+            android:overScrollMode="never"
+            android:scrollbars="none"
             android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}">
 
             <LinearLayout
@@ -64,19 +66,20 @@
 
                 </LinearLayout>
 
-                <FrameLayout
+
+                <android.support.v7.widget.RecyclerView
+                    android:scrollbars="none"
+                    android:overScrollMode="never"
+                    android:id="@+id/skill_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-
-                </FrameLayout>
+                    android:layout_height="wrap_content"
+                    app:adapter="@{viewModel.skillList}" />
 
 
             </LinearLayout>
 
 
-        </ScrollView>
+        </android.support.v4.widget.NestedScrollView>
 
         <android.support.v4.widget.ContentLoadingProgressBar
             style="?android:attr/progressBarStyleLarge"

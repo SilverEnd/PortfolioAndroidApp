@@ -19,16 +19,4 @@ constructor(dataManager: DataManager, schedulerProvider: SchedulerProvider) : Ba
     }
 
 
-    private fun loadMyInfo() {
-        compositeDisposable.add(dataManager.myInfo
-                .subscribeOn(schedulerProvider.io())
-                .observeOn(schedulerProvider.ui())
-                .subscribe(
-                        { myInfo -> setMyInfo(myInfo) }
-                ) { throwable ->
-
-                }
-        )
-    }
-
 }

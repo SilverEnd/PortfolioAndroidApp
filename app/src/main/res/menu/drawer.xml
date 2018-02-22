@@ -16,8 +16,8 @@
             android:title="@string/education"/>
 
         <item
-            android:id="@+id/navItemContact"
+            android:id="@+id/navItemSetting"
             android:checked="true"
-            android:title="@string/contact"/>
+            android:title="@string/setting"/>
     </group>
 </menu>

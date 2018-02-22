@@ -26,7 +26,7 @@ constructor(dataManager: DataManager, schedulerProvider: SchedulerProvider) : Ba
     private fun loadRepos() {
         setIsLoading(true)
         compositeDisposable.add(dataManager
-                .repoListApiCall
+                .getRepoListApiCall()
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .subscribe { repos ->

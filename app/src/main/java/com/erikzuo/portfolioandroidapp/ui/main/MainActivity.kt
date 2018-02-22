@@ -1,6 +1,5 @@
 package com.erikzuo.portfolioandroidapp.ui.main
 
-import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
@@ -14,10 +13,11 @@ import com.erikzuo.portfolioandroidapp.R
 import com.erikzuo.portfolioandroidapp.databinding.ActivityMainBinding
 import com.erikzuo.portfolioandroidapp.databinding.NavHeaderMainBinding
 import com.erikzuo.portfolioandroidapp.ui.base.BaseActivity
-import com.erikzuo.portfolioandroidapp.ui.contact.ContactActivity
 import com.erikzuo.portfolioandroidapp.ui.main.education.EducationFragment
 import com.erikzuo.portfolioandroidapp.ui.main.home.HomeFragment
 import com.erikzuo.portfolioandroidapp.ui.main.work.WorkFragment
+import com.erikzuo.portfolioandroidapp.ui.setting.SettingsActivity
+import com.erikzuo.portfolioandroidapp.viewmodel.ViewModelProviderFactory
 
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -32,7 +32,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
 
     @Inject
-    internal lateinit var mViewModelFactory: ViewModelProvider.Factory
+    internal lateinit var mFactory: ViewModelProviderFactory
 
     @Inject
     internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
@@ -48,7 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
     override val viewModel: MainViewModel
         get() {
-            mViewModel = ViewModelProviders.of(this, mViewModelFactory).get(MainViewModel::class.java)
+            mViewModel = ViewModelProviders.of(this, mFactory).get(MainViewModel::class.java)
             return mViewModel
         }
 
@@ -71,8 +71,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
     private fun setupNavDrawer() {
         val drawerToggle = object : ActionBarDrawerToggle(
                 this,
-                viewDatabinding.drawerView,
-                viewDatabinding.toolbar,
+                binding.drawerView,
+                binding.toolbar,
                 R.string.open_drawer,
                 R.string.close_drawer) {
             override fun onDrawerOpened(drawerView: View) {
@@ -81,7 +81,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
             }
         }
 
-        viewDatabinding.drawerView.addDrawerListener(drawerToggle)
+        binding.drawerView.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
     }
 
@@ -89,14 +89,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         val navHeaderMainBinding = DataBindingUtil.inflate<NavHeaderMainBinding>(
                 layoutInflater,
                 R.layout.nav_header_main,
-                viewDatabinding.navigationView,
+                binding.navigationView,
                 false)
 
-        viewDatabinding.navigationView.addHeaderView(navHeaderMainBinding.root)
+        binding.navigationView.addHeaderView(navHeaderMainBinding.root)
         navHeaderMainBinding.viewModel = this.viewModel
 
-        viewDatabinding.navigationView.setNavigationItemSelectedListener { item ->
-            viewDatabinding.drawerView.closeDrawer(GravityCompat.START)
+        binding.navigationView.setNavigationItemSelectedListener { item ->
+            binding.drawerView.closeDrawer(GravityCompat.START)
 
             this.viewModel.setIsLoading(false)
             when (item.itemId) {
@@ -121,8 +121,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
                     true
                 }
-                R.id.navItemContact -> {
-                    goToContact()
+                R.id.navItemSetting -> {
+                    goToSettings()
 
                     true
                 }
@@ -141,7 +141,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
         this.viewModel.setPageTitle(title)
     }
 
-    private fun goToContact() {
-        startActivity(Intent(this, ContactActivity::class.java))
+    private fun goToSettings() {
+        startActivity(Intent(this, SettingsActivity::class.java))
     }
 }
