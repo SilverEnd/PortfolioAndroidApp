@@ -1,18 +1,15 @@
 package com.erikzuo.portfolioandroidapp.data
 
 import android.content.Context
-import com.erikzuo.portfolioandroidapp.data.model.*
-
+import android.util.Log
+import com.erikzuo.portfolioandroidapp.data.model.Education
+import com.erikzuo.portfolioandroidapp.data.model.MyInfo
+import com.erikzuo.portfolioandroidapp.data.model.Repo
+import com.erikzuo.portfolioandroidapp.data.model.Skill
 import com.erikzuo.portfolioandroidapp.data.remote.GithubService
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.GenericTypeIndicator
-import com.google.firebase.database.ValueEventListener
-
-import javax.inject.Inject
-
+import com.google.firebase.database.*
 import io.reactivex.Observable
+import javax.inject.Inject
 
 /**
  * Created by YifanZuo on 4/2/18.
@@ -21,25 +18,21 @@ import io.reactivex.Observable
 class AppDataManager @Inject
 constructor(private val context: Context, private val githubService: GithubService, private val firebaseDatabase: FirebaseDatabase) : DataManager {
 
-    private lateinit var myInfo: Observable<MyInfo>
 
     override fun getMyInfo(): Observable<MyInfo> {
-        if (myInfo == null) {
-            myInfo = Observable.create { e ->
-                firebaseDatabase.getReference("my_info")
-                        .addValueEventListener(object : ValueEventListener {
-                            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                                e.onNext(dataSnapshot.getValue<MyInfo>(MyInfo::class.java))
-                            }
+        return Observable.create { e ->
+            firebaseDatabase.getReference("my_info")
+                    .addValueEventListener(object : ValueEventListener {
+                        override fun onDataChange(dataSnapshot: DataSnapshot) {
+                            e.onNext(dataSnapshot.getValue<MyInfo>(MyInfo::class.java))
+                        }
 
-                            override fun onCancelled(databaseError: DatabaseError) {
-                                e.onError(databaseError.toException().fillInStackTrace())
-                            }
-                        })
-            }
+                        override fun onCancelled(databaseError: DatabaseError) {
+                            e.onError(databaseError.toException().fillInStackTrace())
+                        }
+                    })
         }
 
-        return myInfo
     }
 
 
@@ -57,6 +50,7 @@ constructor(private val context: Context, private val githubService: GithubServi
                         }
 
                         override fun onCancelled(databaseError: DatabaseError) {
+                            e.onError(databaseError.toException().fillInStackTrace())
 
                         }
                     })
@@ -72,7 +66,7 @@ constructor(private val context: Context, private val githubService: GithubServi
                         }
 
                         override fun onCancelled(databaseError: DatabaseError) {
-
+                            e.onError(databaseError.toException().fillInStackTrace())
                         }
                     })
         }

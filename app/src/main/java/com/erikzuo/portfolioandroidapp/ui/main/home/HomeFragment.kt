@@ -48,9 +48,10 @@ class HomeFragment : BaseFragment<FragmenHomeBinding, HomeViewModel>(), HomeNavi
     override fun initViews() {
         mLayoutManager.orientation = LinearLayoutManager.VERTICAL
         viewDataBinding.skillList.layoutManager = mLayoutManager
-        viewDataBinding.skillList.itemAnimator = DefaultItemAnimator()
+////        viewDataBinding.skillList.itemAnimator = DefaultItemAnimator()
         viewDataBinding.skillList.adapter = mAdapter
         viewDataBinding.skillList.isNestedScrollingEnabled = false
+        viewDataBinding.skillList.setHasFixedSize(true)
     }
 
     companion object {
@@ -63,5 +64,7 @@ class HomeFragment : BaseFragment<FragmenHomeBinding, HomeViewModel>(), HomeNavi
             return fragment
         }
     }
+
+
 
 }

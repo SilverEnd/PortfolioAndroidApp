@@ -4,6 +4,7 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentTransaction
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.View
@@ -39,6 +40,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
     private lateinit var mViewModel: MainViewModel
 
+    // Fragments
+    private val mHomeFragment: HomeFragment = HomeFragment.newInstance()
+    private val mWorkFragment: WorkFragment = WorkFragment.newInstance()
+    private val mEducationFragment: EducationFragment = EducationFragment.newInstance()
+
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -64,7 +70,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
 
         // When we first opened this activity, display Home fragment
         showFragment(
-                HomeFragment.newInstance(),
+                mHomeFragment,
                 getString(R.string.home))
     }
 
@@ -102,21 +108,21 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
             when (item.itemId) {
                 R.id.navItemHome -> {
                     showFragment(
-                            HomeFragment.newInstance(),
+                            mHomeFragment,
                             getString(R.string.home))
 
                     true
                 }
                 R.id.navItemWork -> {
                     showFragment(
-                            WorkFragment.newInstance(),
+                            mWorkFragment,
                             getString(R.string.work))
 
                     true
                 }
                 R.id.navItemEducation -> {
                     showFragment(
-                            EducationFragment.newInstance(),
+                            mEducationFragment,
                             getString(R.string.education))
 
                     true
@@ -132,10 +138,19 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
     }
 
     private fun showFragment(fragment: Fragment, title: String) {
-        supportFragmentManager
-                .beginTransaction()
-                .disallowAddToBackStack()
-                .replace(R.id.clRootView, fragment)
+        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+
+        if (supportFragmentManager.findFragmentByTag(fragment.javaClass.name) == null) {
+            fragmentTransaction
+                    .addToBackStack( fragment.javaClass.name)
+                    .add(R.id.clRootView, fragment, fragment.javaClass.name)
+        }
+
+        fragmentTransaction
+                .hide(mHomeFragment)
+                .hide(mWorkFragment)
+                .hide(mEducationFragment)
+                .show(fragment)
                 .commit()
 
         this.viewModel.setPageTitle(title)
